@@ -1,0 +1,199 @@
+
+:root {
+  --white: #ffffff;
+  --black-1: #202020;
+  --primary: #1b90fc;
+  --grey: #929292;
+  --headline1: 700 2.5rem/normal Roboto Condensed;
+  --subtitle1: 700 1.625rem/1.5rem Roboto Condensed;
+  --button: 700 0.875rem/1rem Roboto;
+  --headline2: 700 1.5rem/normal Roboto Condensed;
+  --body1-regular: 400 1rem/1.5rem Roboto;
+  --body1-bold: 700 1rem/1.5rem Roboto;
+  --body2-bold: 700 0.875rem/1.5rem Roboto;
+  --body2-regular: 400 0.875rem/1.5rem Roboto;
+  --caption-regular: 400 0.75rem/1.5rem Roboto;
+  --caption-bold: 700 0.75rem/1.5rem Roboto;
+  }
+  
+  body {
+    color: var(--white);
+    font: var(--body1-regular);
+    margin: 0;
+  }
+  
+  h1 {
+    font: var(--headline1);
+    text-transform: uppercase;
+    margin: 0;
+    margin-block-end: .5rem;
+  }
+  
+  h2 {
+    font: var(--headline2);
+  }
+  
+  h3 {
+    font: var(--button);
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  .card p {
+    margin-block-end: 24px;
+  }
+  
+  .wrapper {
+    max-inline-size: 1644px;
+    margin: auto;
+  }
+  
+  img {
+    /* hace referencia al ancho maximo de su contenedor */
+    max-inline-size: 100%;
+  }
+  
+  #img-loki {
+    display: none;
+  }
+  
+  .button {
+    background-color: var(--primary);
+    font: var(--button);
+    color: var(--white);
+    text-transform: uppercase;
+    padding-inline: 32px;
+    padding-block: 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  
+  .hero-content {
+    block-size: 1080px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+  
+  .card {
+    max-inline-size: 412px;
+    z-index: 2;
+    /* al utilizar flexbox se contempla el stack context y no es necesario definir diferente a static para utilizar el z-index */
+    /* position: relative; */
+  }
+  
+  .hero {
+    background-image: url(../images/img.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--black-1);
+    position: relative;
+    /* Se utilizan parejas de cordenadas x y y empieza desde la parte superior izquierda */
+    /* Se utiliza la funcion calc(100% - 128px) para respetar le pixel perfect del diseño  */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 128px), 0 100%);
+  }
+  
+  .hero::before {
+    content: '';
+    inline-size: 50%;
+    display: block;
+    background-color: var(--black-1);
+    position: absolute;
+    inset-block: 0;
+    z-index: 1;
+    /* Realizar cortes */
+    clip-path: polygon(0 0, calc(100% - 151px) 0, 100% 100%, 0 100%);
+  }
+  
+  
+  @media screen and (max-width: 1440px) {
+  
+    .wrapper {
+      max-inline-size: 1274px;
+    }
+  
+    .hero-content {
+      block-size: 1024px;
+    }
+  }
+  
+  @media screen and (max-width: 1366px) {
+  
+    .wrapper {
+      max-inline-size: 1200px;
+    }
+  
+    .hero-content {
+      block-size: 768px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+  
+    .wrapper {
+      max-inline-size: 768px;
+    }
+  
+    .hero {
+      background-image: none;
+    }
+  
+    .hero::before {
+      content: none;
+    }
+  
+    .hero-content {
+      block-size: 1024px;
+    }
+  
+    .card {
+      max-inline-size: 640px;
+      margin-block-start: 40px;
+    }
+  
+    #img-loki {
+      display: block;
+    }
+  
+    .button {
+      width: 100%;
+    }
+  
+    .hero-content {
+      flex-direction: column;
+    }
+  
+  }
+  
+  @media screen and (max-width: 375px) {
+  
+    .wrapper {
+      max-inline-size: 375px;
+    }
+  
+    .hero-content {
+      block-size: 640px;
+    }
+  
+    .card {
+      max-inline-size: 312px;
+      margin-block-start: 24px;
+    }
+  
+    .card img {
+      inline-size: 77px;
+      block-size: 32;
+    }
+  
+    h1 {
+      font: var(--headline2);
+    }
+  
+    body {
+      font: var(--body2-regular);
+    }
+  
+  }
